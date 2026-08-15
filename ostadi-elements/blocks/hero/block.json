@@ -1,0 +1,18 @@
+{
+  "apiVersion": 3,
+  "name": "ostadi/hero",
+  "title": "هیرو استادی",
+  "category": "design",
+  "icon": "slides",
+  "editorScript": "file:../../assets/js/blocks.js",
+  "style": "file:../../assets/css/ostadi-elements.css",
+  "render": "file:./render.php",
+  "attributes": {
+    "eyebrow": { "type": "string", "default": "مدرسه استادی" },
+    "title": { "type": "string", "default": "آموزش حرفه‌ای، ساده و هدفمند" },
+    "description": { "type": "string", "default": "سایت آموزشی خود را با المان‌های آماده و حرفه‌ای بسازید." },
+    "buttonText": { "type": "string", "default": "شروع یادگیری" },
+    "buttonUrl": { "type": "string", "default": "#" },
+    "imageUrl": { "type": "string", "default": "" }
+  }
+}
