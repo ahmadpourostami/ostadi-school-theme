@@ -1,0 +1,11 @@
+{
+  "apiVersion": 3,
+  "name": "ostadi/article-card",
+  "title": "کارت مقاله استادی",
+  "category": "design",
+  "icon": "format-image",
+  "editorScript": "file:../../assets/js/blocks.js",
+  "style": "file:../../assets/css/ostadi-elements.css",
+  "render": "file:./render.php",
+  "attributes": { "postId": { "type": "string", "default": "" } }
+}
