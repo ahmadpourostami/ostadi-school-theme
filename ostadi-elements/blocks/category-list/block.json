@@ -1,0 +1,11 @@
+{
+  "apiVersion": 3,
+  "name": "ostadi/category-list",
+  "title": "دسته‌بندی مقالات استادی",
+  "category": "design",
+  "icon": "category",
+  "editorScript": "file:../../assets/js/blocks.js",
+  "style": "file:../../assets/css/ostadi-elements.css",
+  "render": "file:./render.php",
+  "attributes": { "limit": { "type": "string", "default": "6" } }
+}
