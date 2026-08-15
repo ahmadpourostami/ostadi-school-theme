@@ -1,0 +1,1 @@
+# ostadi-school-theme
