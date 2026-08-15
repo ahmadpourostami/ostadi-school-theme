@@ -17,14 +17,20 @@ class Ostadi_Elements_Elementor {
     public function register_widgets( $widgets_manager ) {
         if ( ! class_exists( '\Elementor\Widget_Base' ) ) { return; }
 
-        require_once OSTADI_ELEMENTS_DIR . 'widgets/class-section-heading.php';
-        require_once OSTADI_ELEMENTS_DIR . 'widgets/class-article-card.php';
-        require_once OSTADI_ELEMENTS_DIR . 'widgets/class-article-grid.php';
-        require_once OSTADI_ELEMENTS_DIR . 'widgets/class-category-list.php';
+        $widgets = array(
+            'class-section-heading.php' => 'Ostadi_Widget_Section_Heading',
+            'class-article-card.php'   => 'Ostadi_Widget_Article_Card',
+            'class-article-grid.php'   => 'Ostadi_Widget_Article_Grid',
+            'class-category-list.php'  => 'Ostadi_Widget_Category_List',
+            'class-hero.php'           => 'Ostadi_Widget_Hero',
+            'class-video-card.php'     => 'Ostadi_Widget_Video_Card',
+            'class-podcast-card.php'   => 'Ostadi_Widget_Podcast_Card',
+            'class-course-card.php'    => 'Ostadi_Widget_Course_Card',
+        );
 
-        $widgets_manager->register( new Ostadi_Widget_Section_Heading() );
-        $widgets_manager->register( new Ostadi_Widget_Article_Card() );
-        $widgets_manager->register( new Ostadi_Widget_Article_Grid() );
-        $widgets_manager->register( new Ostadi_Widget_Category_List() );
+        foreach ( $widgets as $file => $class ) {
+            require_once OSTADI_ELEMENTS_DIR . 'widgets/' . $file;
+            $widgets_manager->register( new $class() );
+        }
     }
 }
