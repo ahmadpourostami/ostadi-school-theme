@@ -12,6 +12,8 @@ class Ostadi_Elements_Gutenberg {
             'article-card',
             'article-grid',
             'category-list',
+            'hero',
+            'video-card',
         );
 
         foreach ( $blocks as $block ) {
