@@ -1,0 +1,17 @@
+{
+  "apiVersion": 3,
+  "name": "ostadi/video-card",
+  "title": "کارت ویدئو استادی",
+  "category": "design",
+  "icon": "video-alt3",
+  "editorScript": "file:../../assets/js/blocks.js",
+  "style": "file:../../assets/css/ostadi-elements.css",
+  "render": "file:./render.php",
+  "attributes": {
+    "title": { "type": "string", "default": "آموزش طراحی سایت حرفه‌ای" },
+    "description": { "type": "string", "default": "یک ویدئوی آموزشی برای یادگیری سریع‌تر." },
+    "imageUrl": { "type": "string", "default": "" },
+    "videoUrl": { "type": "string", "default": "#" },
+    "duration": { "type": "string", "default": "۱۲:۳۰" }
+  }
+}
