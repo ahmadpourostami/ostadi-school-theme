@@ -1,0 +1,12 @@
+{
+  "apiVersion": 3,
+  "name": "ostadi/section-heading",
+  "title": "عنوان بخش استادی",
+  "category": "design",
+  "icon": "heading",
+  "description": "عنوان بخش با استایل هماهنگ با طراحی مدرسه استادی.",
+  "editorScript": "file:../../assets/js/blocks.js",
+  "style": "file:../../assets/css/ostadi-elements.css",
+  "render": "file:./render.php",
+  "attributes": { "title": { "type": "string", "default": "آخرین مطالب آموزشی" }, "description": { "type": "string", "default": "یادگیری، رشد و توسعه مهارت‌های شما" } }
+}
