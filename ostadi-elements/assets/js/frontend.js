@@ -1,0 +1,1 @@
+document.addEventListener('DOMContentLoaded',function(){document.documentElement.setAttribute('data-ostadi-elements','1');});
