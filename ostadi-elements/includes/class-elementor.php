@@ -26,6 +26,7 @@ class Ostadi_Elements_Elementor {
             'class-video-card.php'     => 'Ostadi_Widget_Video_Card',
             'class-video-grid.php'     => 'Ostadi_Widget_Video_Grid',
             'class-podcast-card.php'   => 'Ostadi_Widget_Podcast_Card',
+            'class-podcast-grid.php'   => 'Ostadi_Widget_Podcast_Grid',
             'class-course-card.php'    => 'Ostadi_Widget_Course_Card',
         );
 
