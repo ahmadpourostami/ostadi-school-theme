@@ -1,0 +1,27 @@
+name: Build Ostadi Elements ZIP
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Package plugin
+        run: |
+          mkdir -p dist
+          zip -r dist/ostadi-elements.zip ostadi-elements -x '*.git*' '*.DS_Store'
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ostadi-elements
+          path: dist/ostadi-elements.zip
