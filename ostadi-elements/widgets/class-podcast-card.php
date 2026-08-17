@@ -18,12 +18,12 @@ class Ostadi_Widget_Podcast_Card extends \Elementor\Widget_Base {
 
     protected function render() {
         $s = $this->get_settings_for_display();
-        $url = ! empty( $s['audio_url']['url'] ) ? $s['audio_url']['url'] : '#';
+        $url = ! empty( $s['audio_url']['url'] ) ? $s['audio_url']['url'] : '';
         ?>
         <article class="ostadi-podcast-card">
             <div class="ostadi-podcast-card__icon">♫</div>
             <div class="ostadi-podcast-card__content"><span><?php echo esc_html( $s['episode'] ); ?></span><h3><?php echo esc_html( $s['title'] ); ?></h3><small><?php echo esc_html( $s['duration'] ); ?></small></div>
-            <a class="ostadi-podcast-card__play" href="<?php echo esc_url( $url ); ?>" aria-label="پخش پادکست">▶</a>
+            <?php if ( $url ) : ?><button class="ostadi-podcast-card__play" type="button" data-ostadi-audio="<?php echo esc_url( $url ); ?>" aria-label="پخش پادکست">▶</button><?php endif; ?>
         </article>
         <?php
     }
