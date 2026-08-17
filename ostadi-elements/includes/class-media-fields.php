@@ -19,33 +19,27 @@ class Ostadi_Elements_Media_Fields {
         $screen = get_current_screen();
         if ( ! $screen || ! in_array( $screen->post_type, array( 'ostadi_video', 'ostadi_podcast' ), true ) ) { return; }
         wp_enqueue_media();
+        wp_enqueue_script( 'ostadi-admin-media', OSTADI_ELEMENTS_URL . 'assets/js/admin-media.js', array( 'jquery' ), OSTADI_ELEMENTS_VERSION, true );
     }
 
     private function field( $label, $name, $value, $type = 'text', $button = '' ) {
         echo '<p><label><strong>' . esc_html( $label ) . '</strong></label><br>';
-        echo '<input type="' . esc_attr( $type ) . '" class="widefat ostadi-media-field" name="' . esc_attr( $name ) . '" value="' . esc_attr( $value ) . '">';
-        if ( $button ) {
-            echo '<button type="button" class="button ostadi-media-button" data-target="' . esc_attr( $name ) . '">' . esc_html( $button ) . '</button>';
-        }
+        echo '<input id="' . esc_attr( $name ) . '" type="' . esc_attr( $type ) . '" class="widefat ostadi-media-field" name="' . esc_attr( $name ) . '" value="' . esc_attr( $value ) . '">';
+        if ( $button ) { echo '<button type="button" class="button ostadi-media-button" data-target="' . esc_attr( $name ) . '">' . esc_html( $button ) . '</button>'; }
         echo '</p>';
     }
 
     public function video_box( $post ) {
         wp_nonce_field( 'ostadi_video_meta', 'ostadi_video_nonce' );
-        $url = get_post_meta( $post->ID, '_ostadi_video_url', true );
-        $duration = get_post_meta( $post->ID, '_ostadi_video_duration', true );
-        $this->field( 'لینک ویدئو', 'ostadi_video_url', $url, 'url', 'انتخاب از رسانه' );
-        $this->field( 'مدت زمان', 'ostadi_video_duration', $duration );
+        $this->field( 'لینک ویدئو', 'ostadi_video_url', get_post_meta( $post->ID, '_ostadi_video_url', true ), 'url', 'انتخاب از رسانه' );
+        $this->field( 'مدت زمان', 'ostadi_video_duration', get_post_meta( $post->ID, '_ostadi_video_duration', true ) );
     }
 
     public function podcast_box( $post ) {
         wp_nonce_field( 'ostadi_podcast_meta', 'ostadi_podcast_nonce' );
-        $url = get_post_meta( $post->ID, '_ostadi_podcast_url', true );
-        $duration = get_post_meta( $post->ID, '_ostadi_podcast_duration', true );
-        $host = get_post_meta( $post->ID, '_ostadi_podcast_host', true );
-        $this->field( 'فایل / لینک صوتی', 'ostadi_podcast_url', $url, 'url', 'انتخاب فایل صوتی' );
-        $this->field( 'مدت زمان', 'ostadi_podcast_duration', $duration );
-        $this->field( 'مدرس / گوینده', 'ostadi_podcast_host', $host );
+        $this->field( 'فایل / لینک صوتی', 'ostadi_podcast_url', get_post_meta( $post->ID, '_ostadi_podcast_url', true ), 'url', 'انتخاب فایل صوتی' );
+        $this->field( 'مدت زمان', 'ostadi_podcast_duration', get_post_meta( $post->ID, '_ostadi_podcast_duration', true ) );
+        $this->field( 'مدرس / گوینده', 'ostadi_podcast_host', get_post_meta( $post->ID, '_ostadi_podcast_host', true ) );
     }
 
     private function allowed( $post_id, $nonce, $action ) {
@@ -57,19 +51,14 @@ class Ostadi_Elements_Media_Fields {
 
     public function save_video( $post_id ) {
         if ( ! $this->allowed( $post_id, 'ostadi_video_nonce', 'ostadi_video_meta' ) ) { return; }
-        $url = isset( $_POST['ostadi_video_url'] ) ? esc_url_raw( wp_unslash( $_POST['ostadi_video_url'] ) ) : '';
-        $duration = isset( $_POST['ostadi_video_duration'] ) ? sanitize_text_field( wp_unslash( $_POST['ostadi_video_duration'] ) ) : '';
-        update_post_meta( $post_id, '_ostadi_video_url', $url );
-        update_post_meta( $post_id, '_ostadi_video_duration', $duration );
+        update_post_meta( $post_id, '_ostadi_video_url', isset( $_POST['ostadi_video_url'] ) ? esc_url_raw( wp_unslash( $_POST['ostadi_video_url'] ) ) : '' );
+        update_post_meta( $post_id, '_ostadi_video_duration', isset( $_POST['ostadi_video_duration'] ) ? sanitize_text_field( wp_unslash( $_POST['ostadi_video_duration'] ) ) : '' );
     }
 
     public function save_podcast( $post_id ) {
         if ( ! $this->allowed( $post_id, 'ostadi_podcast_nonce', 'ostadi_podcast_meta' ) ) { return; }
-        $url = isset( $_POST['ostadi_podcast_url'] ) ? esc_url_raw( wp_unslash( $_POST['ostadi_podcast_url'] ) ) : '';
-        $duration = isset( $_POST['ostadi_podcast_duration'] ) ? sanitize_text_field( wp_unslash( $_POST['ostadi_podcast_duration'] ) ) : '';
-        $host = isset( $_POST['ostadi_podcast_host'] ) ? sanitize_text_field( wp_unslash( $_POST['ostadi_podcast_host'] ) ) : '';
-        update_post_meta( $post_id, '_ostadi_podcast_url', $url );
-        update_post_meta( $post_id, '_ostadi_podcast_duration', $duration );
-        update_post_meta( $post_id, '_ostadi_podcast_host', $host );
+        update_post_meta( $post_id, '_ostadi_podcast_url', isset( $_POST['ostadi_podcast_url'] ) ? esc_url_raw( wp_unslash( $_POST['ostadi_podcast_url'] ) ) : '' );
+        update_post_meta( $post_id, '_ostadi_podcast_duration', isset( $_POST['ostadi_podcast_duration'] ) ? sanitize_text_field( wp_unslash( $_POST['ostadi_podcast_duration'] ) ) : '' );
+        update_post_meta( $post_id, '_ostadi_podcast_host', isset( $_POST['ostadi_podcast_host'] ) ? sanitize_text_field( wp_unslash( $_POST['ostadi_podcast_host'] ) ) : '' );
     }
 }
