@@ -15,7 +15,7 @@ class Ostadi_Elements_Elementor {
     }
 
     public function register_widgets( $widgets_manager ) {
-        if ( ! class_exists( '\Elementor\Widget_Base' ) ) { return; }
+        if ( ! class_exists( '\\Elementor\\Widget_Base' ) ) { return; }
 
         $widgets = array(
             'class-section-heading.php' => 'Ostadi_Widget_Section_Heading',
@@ -23,6 +23,7 @@ class Ostadi_Elements_Elementor {
             'class-article-grid.php'   => 'Ostadi_Widget_Article_Grid',
             'class-category-list.php'  => 'Ostadi_Widget_Category_List',
             'class-hero.php'           => 'Ostadi_Widget_Hero',
+            'class-home-layout.php'    => 'Ostadi_Widget_Home_Layout',
             'class-video-card.php'     => 'Ostadi_Widget_Video_Card',
             'class-video-grid.php'     => 'Ostadi_Widget_Video_Grid',
             'class-podcast-card.php'   => 'Ostadi_Widget_Podcast_Card',
