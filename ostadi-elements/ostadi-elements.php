@@ -18,10 +18,12 @@ require_once OSTADI_ELEMENTS_DIR . 'includes/class-assets.php';
 require_once OSTADI_ELEMENTS_DIR . 'includes/class-gutenberg.php';
 require_once OSTADI_ELEMENTS_DIR . 'includes/class-elementor.php';
 require_once OSTADI_ELEMENTS_DIR . 'includes/class-content-types.php';
+require_once OSTADI_ELEMENTS_DIR . 'includes/class-media-fields.php';
 
 add_action( 'plugins_loaded', function() {
     new Ostadi_Elements_Assets();
     new Ostadi_Elements_Gutenberg();
     new Ostadi_Elements_Elementor();
     new Ostadi_Elements_Content_Types();
+    new Ostadi_Elements_Media_Fields();
 } );
