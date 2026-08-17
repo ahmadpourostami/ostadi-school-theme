@@ -15,7 +15,7 @@ class Ostadi_Elements_Elementor {
     }
 
     public function register_widgets( $widgets_manager ) {
-        if ( ! class_exists( '\\Elementor\\Widget_Base' ) ) { return; }
+        if ( ! class_exists( '\Elementor\Widget_Base' ) ) { return; }
 
         $widgets = array(
             'class-section-heading.php' => 'Ostadi_Widget_Section_Heading',
